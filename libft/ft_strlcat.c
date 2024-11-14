@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/13 09:12:42 by ndizullh          #+#    #+#             */
+/*   Updated: 2024/11/14 09:48:59 by ndizullh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 DESCRIPTION
      The strlcpy() and strlcat() functions copy and concatenate strings respectively.
@@ -18,8 +30,31 @@ DESCRIPTION
      that means the initial length of dst plus the length of src.  While this may
      seem somewhat confusing, it was done to make truncation detection simple.
 */
-/*
-#include <string.h>
 
-strlcpy(char *dst, const char *src, size_t size);
-*/
+#include <stddef.h>
+
+size_t  ft_strlen(const char *s)
+{
+    size_t i;
+
+    i = 0;
+
+    while(s[i] != '\0')
+    {
+        i++
+    }
+    return i;
+}
+
+size_t  ft_strlcat(char *dst, const char *restrict src, size_t dstsize)
+{
+    size_t i;
+    size_t j;
+
+    i = 0;
+    j = 0;
+
+    while 
+
+
+}

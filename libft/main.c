@@ -35,15 +35,15 @@ while(i < sizeof(memory))
 
 /*
 //Test case for ft_memcpy
-    char src[] = {1,2,3,4,5,6,7,8,9};
-    char dest[15] = {0};
+    char src[] = "abcdefgh";
+    char dest[15];
 
     ft_memcpy(dest, src, 4);
     int i = 0;
 
     while(i < 4)
     {
-        printf("%d \tSrc: %p[%d]\tDest: %p\t[%d]\n", i, &src[i], src[i], &dest[i], dest[i]);
+        printf("%d \tSrc: %p[%c]\tDest: %p\t[%c]\n", i, &src[i], src[i], &dest[i], dest[i]);
         i++;
     }
 
@@ -51,48 +51,41 @@ while(i < sizeof(memory))
 
     while(i < sizeof(dest))
     {
-        printf("%d \tSrc: %p[%d]\tDest: %p\t[%d]\n", i, &src[i], src[i], &dest[i], dest[i]);
+        printf("%d \tSrc: %p[%c]\tDest: %p\t[%c]\n", i, &src[i], src[i], &dest[i], dest[i]);
         i++;
     }
     */
-
-   /*
-   //Test case for ft_memcpy - overlapping
-   char str[] = "Hey hippo";
-
-   printf("Source\t: %s\n", str);
-   ft_memcpy(str,str + 3, 4);
-   printf("Dest\t: %s - ft_memcpy\n", str);
-   */
-   
-   /* Test with memcpy
-   char str[] = "Hey hippo";
-   printf("Source\t: %s\n", str);
-   memcpy(str,str + 3, 4);
-   printf("Dest\t: %s - memcpy\n", str);
-   */
-
-  /*
-  //Test case for ft_memmove - avoid overlapping
-   char str[] = "Hey hippo";
-   printf("Source\t: %s\n", str);
-   ft_memmove(str,str + 3, 4);
-   printf("Dest\t: %s\n", str);
-   */
   
-   ///* Test with memmove
-   char str[] = "saya suka makan nasi 123456789 hehehe";
+   /* Comparing memcpy with memmove
+   char str[] = "abcdefgh";
    printf("Source\t: %s\n", str);
 
-   memcpy(str + 1,str, 4);
+   ft_memcpy(str + 1,str, 4);
    printf("Dest\t: %s\n", str);
 
-   strcpy(str, "saya suka makan nasi 123456789 hehehe");
+   strcpy(str, "abcdefgh");
 
-   memmove(str + 1,str, 4);
+   ft_memmove(str + 1,str, 4);
    printf("Dest\t: %s\n", str);
+   */
 
-   //*/
+
+    /*//Test case for ft_strlcpy
+    const char src[] = "0123456789";
+    char dest [10];
+
+    ft_strlcpy(dest, src, sizeof(dest));
+
+    printf("Src\t: %s\nDest\t: %s\nSize\t: %ld\n", src, dest, sizeof(dest));
+    */
+
+   //Test case for ft_strlcat
+   const char s[] = "0123456789";
+   char d[10] = "ABC";
+
+   strlcat(d, s, sizeof(d));
+
+   printf("Src\t: %s\nDest\t: %s\nSize\t: %ld\n", s, d, sizeof(d));
 
     return 0;
 
