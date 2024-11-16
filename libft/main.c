@@ -3,6 +3,71 @@
 #include <stdlib.h>
 #include <string.h>
 
+/*
+size_t strlcat(char *dst, const char *src, size_t dstsize) {
+    size_t dlen = strnlen(dst, dstsize);
+    size_t slen = strlen(src);
+
+    if (dlen == dstsize) return dstsize + slen;
+    if (slen < dstsize - dlen) {
+        memcpy(dst + dlen, src, slen + 1);
+    } else {
+        memcpy(dst + dlen, src, dstsize - dlen - 1);
+        dst[dstsize - 1] = '\0';
+    }
+    return dlen + slen;
+}
+*/
+
+/*
+char *ft_strchr(const char *s, int c)
+{
+    int i;
+    i = 0;
+    
+
+    while(s[i] != (char) c)
+    {
+        if(s[i] == '\0')
+        {
+            return NULL;
+        }
+        s++;
+    }
+    return (char *)s;
+}
+*/
+
+#include <stddef.h>
+
+char *strnstr(const char *haystack, const char *needle, size_t len) {
+    size_t needle_len;
+    
+    // If needle is an empty string, return haystack
+    if (*needle == '\0') {
+        return (char *)haystack;
+    }
+    
+    needle_len = 0;
+    while (needle[needle_len] != '\0') {
+        needle_len++;
+    }
+    
+    for (size_t i = 0; i <= len - needle_len; i++) {
+        size_t j;
+        for (j = 0; j < needle_len; j++) {
+            if (haystack[i + j] != needle[j]) {
+                break;
+            }
+        }
+        if (j == needle_len) {
+            return (char *)(haystack + i);
+        }
+    }
+    return NULL;
+}
+
+
 int main()
 {
 /*
@@ -79,14 +144,64 @@ while(i < sizeof(memory))
     printf("Src\t: %s\nDest\t: %s\nSize\t: %ld\n", src, dest, sizeof(dest));
     */
 
+   /*
    //Test case for ft_strlcat
    const char s[] = "0123456789";
    char d[10] = "ABC";
+   size_t result;
 
-   strlcat(d, s, sizeof(d));
+   ft_strlcat(d, s, sizeof(d));
 
    printf("Src\t: %s\nDest\t: %s\nSize\t: %ld\n", s, d, sizeof(d));
+    */
+
+   /*
+   //Test case for ft_strchr
+   const char *string = "Hello1234";
+   int c = 'l';
+
+   printf("%s",ft_strchr(string, c));
+   */
+
+   /*
+   //Test case for ft_strrchr
+   const char *string = "ABC123";
+   int c = '1';
+
+   printf("%s",ft_strrchr(string, c));
+
+  */
+    
+    /*
+    const char* str1 = "Hello";
+    const char* str2 = "Hollo";
+    size_t n = 3;
+    
+    printf("%d", ft_strncmp(str1, str2, n));
 
     return 0;
+    */
+
+   /*
+    //Test for ft_memchr
+    const char string[] = "Memorylane";
+    char search = 'n';
+    size_t n = sizeof(string);
+
+    char *result = ft_memchr(string, search, n);
+
+    printf("%c found at %s , %ld", search, result, result - string);
+
+    return 0;
+    */
+
+    //Test for ft_memcmp
+
+    const char *str1 = "Hellohehemeow";
+    const char *str2 = "hehe";
+    size_t n = 12;
+
+
+    printf("%s", strnstr(str1, str2, n));
 
 }

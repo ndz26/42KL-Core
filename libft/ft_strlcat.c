@@ -6,7 +6,7 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:12:42 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/14 09:48:59 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/11/15 09:18:22 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ size_t  ft_strlen(const char *s)
 
     while(s[i] != '\0')
     {
-        i++
+        i++;
     }
     return i;
 }
@@ -54,7 +54,20 @@ size_t  ft_strlcat(char *dst, const char *restrict src, size_t dstsize)
     i = 0;
     j = 0;
 
-    while 
+    while (dst[i] != '\0' && i < dstsize)
+    {
+        i++;
+    }
+    if (i == dstsize)
+    {
+        return i +ft_strlen(src);
+    }
+    while (src[j] != '\0' && i + j + 1 < dstsize)
+    {
+        dst[i+j] = src[j];
+        j++;
+    }
+    dst[i+j] = '\0';
 
-
+    return i + ft_strlen(src);
 }
