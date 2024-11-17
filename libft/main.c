@@ -202,6 +202,6 @@ while(i < sizeof(memory))
     size_t n = 12;
 
 
-    printf("%s", strnstr(str1, str2, n));
+    printf("%s", ft_strnstr(str1, str2, n));
 
 }
