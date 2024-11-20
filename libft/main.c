@@ -24,7 +24,7 @@ char *ft_strchr(const char *s, int c)
 {
     int i;
     i = 0;
-    
+
 
     while(s[i] != (char) c)
     {
@@ -40,19 +40,27 @@ char *ft_strchr(const char *s, int c)
 
 #include <stddef.h>
 
+void run_test(const char *s1, const char *set, const char *expected)
+{
+    char *result = ft_strtrim(s1, set);
+    printf("Original: \"%s\"\n", s1);
+    printf("Set: \"%s\"\n", set);
+    printf("Trimmed: \"%s\"\n", result); printf("Expected: \"%s\"\n", expected); if (result && strcmp(result, expected) == 0) { printf("Test Passed\n"); } else { printf("Test Failed\n"); } printf("------------\n"); free(result); // Free the allocated memory
+}
+
 char *strnstr(const char *haystack, const char *needle, size_t len) {
     size_t needle_len;
-    
+
     // If needle is an empty string, return haystack
     if (*needle == '\0') {
         return (char *)haystack;
     }
-    
+
     needle_len = 0;
     while (needle[needle_len] != '\0') {
         needle_len++;
     }
-    
+
     for (size_t i = 0; i <= len - needle_len; i++) {
         size_t j;
         for (j = 0; j < needle_len; j++) {
@@ -120,7 +128,7 @@ while(i < sizeof(memory))
         i++;
     }
     */
-  
+
    /* Comparing memcpy with memmove
    char str[] = "abcdefgh";
    printf("Source\t: %s\n", str);
@@ -171,12 +179,12 @@ while(i < sizeof(memory))
    printf("%s",ft_strrchr(string, c));
 
   */
-    
+
     /*
     const char* str1 = "Hello";
     const char* str2 = "Hollo";
     size_t n = 3;
-    
+
     printf("%d", ft_strncmp(str1, str2, n));
 
     return 0;
@@ -195,6 +203,7 @@ while(i < sizeof(memory))
     return 0;
     */
 
+    /*
     //Test for ft_memcmp
 
     const char *str1 = "Hellohehemeow";
@@ -203,5 +212,13 @@ while(i < sizeof(memory))
 
 
     printf("%s", ft_strnstr(str1, str2, n));
+    */
+
+  run_test(" Hello, World! ", " ", "Hello, World!");
+  run_test("xxxHello, World!xxx", "x", "Hello, World!");
+  run_test(" ", " ", "");
+  run_test("abcde", "e", "abcd");
+  run_test("helloworld", "hell", "oworld");
+  return 0;
 
 }

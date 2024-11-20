@@ -6,13 +6,13 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:12:42 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/15 09:18:22 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:24:28 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 DESCRIPTION
-     The strlcpy() and strlcat() functions copy and concatenate strings respectively.
+     The strlcat() function concatenate strings respectively.
      They are designed to be safer, more consistent, and less error prone replace‐
      ments for strncpy(3) and strncat(3).  Unlike those functions, strlcpy() and
      strlcat() take the full size of the buffer (not just the length) and guarantee
@@ -31,20 +31,7 @@ DESCRIPTION
      seem somewhat confusing, it was done to make truncation detection simple.
 */
 
-#include <stddef.h>
-
-size_t  ft_strlen(const char *s)
-{
-    size_t i;
-
-    i = 0;
-
-    while(s[i] != '\0')
-    {
-        i++;
-    }
-    return i;
-}
+#include "libft.h"
 
 size_t  ft_strlcat(char *dst, const char *restrict src, size_t dstsize)
 {
