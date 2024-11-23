@@ -1,16 +1,25 @@
-/*
-isprint()
-    checks for any printable character including space.
-*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/23 18:25:19 by ndizullh          #+#    #+#             */
+/*   Updated: 2024/11/23 18:25:28 by ndizullh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 int ft_isprint(int c)
 {
-    if(c >= 32 && c <= 126)
-    {
-        return (1);
-    }
-    else
-    {
-        return (0);
-    }
+	if(c >= 32 && c <= 126)
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
 }

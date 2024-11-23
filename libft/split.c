@@ -1,93 +1,70 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "libft.h"
 
-// Function to check if a character is the delimiter
-int is_separator(char c, char delimiter) {
-    return c == delimiter;
+static int	is_delimiter(char c, char d)
+{
+	return (c == d);
 }
 
-// Function to count substrings separated by the delimiter
-int count_substrings(char *str, char delimiter) {
-    int count = 0;
-    int in_substring = 0;
+static char	*cp_substr(const char *start, const char *end)
+{
+	char	*substr;
 
-    while (*str) {
-        if (is_separator(*str, delimiter)) {
-            in_substring = 0;
-        } else {
-            if (in_substring == 0) {
-                count++;
-                in_substring = 1;
-            }
-        }
-        str++;
-    }
-    return count;
+	substr = (char *)malloc(end - start + 1);
+	if (!substr)
+		return (NULL);
+	strncpy(substr, start, end - start);
+	substr[end - start] = '\0';
+	return (substr);
 }
 
-// Function to copy a substring
-char *copy_substring(char *start, char *end) {
-    size_t length = end - start;
-    char *substring = (char *)malloc(length + 1);
-    if (substring == NULL) {
-        return NULL;
-    }
-    strncpy(substring, start, length);
-    substring[length] = '\0';
-    return substring;
+static int	count_substr(const char *str, char d)
+{
+	int	count;
+
+	count = 0;
+	while (*str)
+	{
+		while (*str && is_delimiter(*str, d))
+			str++;
+		if (*str)
+			count++;
+		while (*str && !is_delimiter(*str, d))
+			str++;
+	}
+	return (count);
 }
 
-// Function to split a string by a single delimiter
-char **split(char *str, char delimiter) {
-    if (str == NULL) {
-        return NULL;
-    }
-
-    int substr_count = count_substrings(str, delimiter);
-    char **result = (char **)malloc((substr_count + 1) * sizeof(char *));
-    if (result == NULL) {
-        return NULL;
-    }
-
-    int index = 0;
-    char *start = NULL;
-    while (*str) {
-        if (is_separator(*str, delimiter)) {
-            if (start != NULL) {
-                result[index++] = copy_substring(start, str);
-                start = NULL;
-            }
-        } else {
-            if (start == NULL) {
-                start = str;
-            }
-        }
-        str++;
-    }
-    if (start != NULL) {
-        result[index++] = copy_substring(start, str);
-    }
-    result[index] = NULL;
-
-    return result;
+static void	free_result(char **result, int i)
+{
+	while (i-- > 0)
+		free(result[i]);
+	free(result);
 }
 
-int main() {
-    char str[] = "Hello world!. How are you?";
-    char delimiter = '.';
-    char **result = split(str, delimiter);
+char	**ft_split(char const *s, char c)
+{
+	char		**result;
+	const char	*start;
+	int			i;
 
-    if (result != NULL) {
-        for (int i = 0; result[i] != NULL; i++) {
-            printf("Substring %d: %s\n", i, result[i]);
-            free(result[i]); // Free each allocated substring
-        }
-        free(result); // Free the array of pointers
-    } else {
-        printf("Memory allocation failed or invalid input\n");
-    }
-
-    return 0;
+	result = (char **)malloc(sizeof(char *) * (count_substr(s, c) + 1));
+	if (!s || !(result))
+		return (NULL);
+	i = 0;
+	while (*s)
+	{
+		if (!is_delimiter(*s, c))
+		{
+			start = s;
+			while (*s && !is_delimiter(*s, c))
+				s++;
+			result[i++] = cp_substr(start, s);
+			if (!(result[i++]))
+				return (free_result(result, i - 1), NULL);
+		}
+		else
+			s++;
+	}
+	result[i] = NULL;
+	return (result);
 }
-

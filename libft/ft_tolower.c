@@ -1,18 +1,26 @@
-/*
- If c is an uppercase letter, tolower() returns its lowercase equivalent, if  a
-       lowercase  representation exists in the current locale.  Otherwise, it returns
-       c.
-*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/23 18:36:03 by ndizullh          #+#    #+#             */
+/*   Updated: 2024/11/23 18:36:13 by ndizullh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 int ft_tolower(int c)
 {
-    if(c >= 65 && c <= 90)
-    {
-        c = c + 32;
-    }
-    else
-    {
-        c = c;
-    }
-    return c;
+	if(c >= 65 && c <= 90)
+	{
+		c = c + 32;
+	}
+	else
+	{
+		c = c;
+	}
+	return c;
 }

@@ -6,92 +6,77 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 20:41:34 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/21 17:01:28 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/11/23 18:30:22 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_delimiter(char c, char delimiter)
+static int	is_delimiter(char c, char d)
 {
-	return (c == delimiter);
+	return (c == d);
 }
 
-int	count_substr(const char *str, char printbl)
+static char	*cp_substr(const char *start, const char *end)
 {
-	int	i;
-	int	substrcount;
-
-	i = 0;
-	while (*str)
-	{
-		if (is_delimiter(*str, printbl))
-		{
-			substrcount = 0;
-		}
-		else
-		{
-			if (substrcount == 0)
-			{
-				i++;
-			}
-			substrcount = 1;
-		}
-		str++;
-	}
-	return (i);
-}
-
-char	*cp_substr(char *start, char *end)
-{
-	size_t	substrlen;
 	char	*substr;
 
-	substrlen = end - start;
-	substr = (char *)malloc(substrlen + 1);
-	if (substr == NULL)
+	substr = (char *)malloc(end - start + 1);
+	if (!substr)
 		return (NULL);
-	strncpy(substr, start, substrlen);
-	substr[substrlen] = '\0';
+	strncpy(substr, start, end - start);
+	substr[end - start] = '\0';
 	return (substr);
 }
 
-char	**split(char *str, char delimiter)
+static int	count_substr(const char *str, char d)
 {
-	int		substr_count;
-	char	**result;
-	int		index;
-	char	*start;
+	int	count;
 
-	if (str == NULL)
-		return (NULL);
-	substr_count = count_substr(str, delimiter);
-	result = (char **)malloc((substr_count + 1) * sizeof(char *));
-	if (result == NULL)
-		return (NULL);
-	index = 0;
-	start = NULL;
+	count = 0;
 	while (*str)
 	{
-		if (is_delimiter(*str, delimiter))
+		while (*str && is_delimiter(*str, d))
+			str++;
+		if (*str)
+			count++;
+		while (*str && !is_delimiter(*str, d))
+			str++;
+	}
+	return (count);
+}
+
+static void	free_result(char **result, int i)
+{
+	while (i-- > 0)
+		free(result[i]);
+	free(result);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char		**result;
+	const char	*start;
+	int			i;
+
+	result = (char **)malloc(sizeof(char *) * (count_substr(s, c) + 1));
+	if (!s || !(result))
+		return (NULL);
+	i = 0;
+	while (*s)
+	{
+		if (!is_delimiter(*s, c))
 		{
-			if (start != NULL)
-			{
-				result[index++] = cp_substr(start, str);
-				start = NULL;
-			}
+			start = s;
+			while (*s && !is_delimiter(*s, c))
+				s++;
+			result[i++] = cp_substr(start, s);
+			if (!(result[i++]))
+				return (free_result(result, i - 1), NULL);
 		}
 		else
-		{
-			if (start == NULL)
-				start = str;
-		}
-		str++;
+			s++;
 	}
-	if (start != NULL)
-	{
-		result[index++] = cp_substr(start, str);
-	}
-	result[index] = NULL;
+	result[i] = NULL;
 	return (result);
 }

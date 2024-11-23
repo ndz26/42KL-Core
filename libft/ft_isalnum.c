@@ -1,7 +1,16 @@
-/*isalnum()
-              checks for an alphanumeric character;  it  is  equivalent  to
-              (isalpha(c) || isdigit(c)).
-*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/23 18:23:54 by ndizullh          #+#    #+#             */
+/*   Updated: 2024/11/23 18:24:10 by ndizullh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isalnum(int c)
 {

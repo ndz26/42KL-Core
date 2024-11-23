@@ -1,20 +1,26 @@
-/*
-DESCRIPTION
-       These functions convert lowercase letters to uppercase, and vice versa.
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/23 18:21:44 by ndizullh          #+#    #+#             */
+/*   Updated: 2024/11/23 18:22:28 by ndizullh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-       If  c is a lowercase letter, toupper() returns its uppercase equivalent, if an
-       uppercase representation exists in the current locale.  Otherwise, it  returns
-       c.  */
+#include "libft.h"
 
 int toupper(int c)
 {
-    if(c >= 97 && c <= 122)
-    {
-        c = c - 32;
-    }
-    else
-    {
-        c = c;
-    }
-    return c;
+	if(c >= 97 && c <= 122)
+	{
+		c = c - 32;
+	}
+	else
+	{
+		c = c;
+	}
+	return c;
 }

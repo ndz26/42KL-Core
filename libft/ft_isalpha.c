@@ -1,11 +1,16 @@
-/*
-isalpha()
-    checks  for  an alphabetic character; in the standard "C" lo‐
-    cale, it is equivalent to  (isupper(c)  ||  islower(c)).   In
-    some  locales,  there  may be additional characters for which
-    isalpha() is true—letters which  are  neither  uppercase  nor
-    lowercase.
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/23 18:24:33 by ndizullh          #+#    #+#             */
+/*   Updated: 2024/11/23 18:24:49 by ndizullh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isalpha(int c)
 {

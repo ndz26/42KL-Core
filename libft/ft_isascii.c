@@ -1,8 +1,16 @@
-/*
-  isascii()
-              checks  whether  c  is  a 7-bit unsigned char value that fits
-              into the ASCII character set.
-*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/23 18:24:54 by ndizullh          #+#    #+#             */
+/*   Updated: 2024/11/23 18:24:59 by ndizullh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isacii(int c)
 {

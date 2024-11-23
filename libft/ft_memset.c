@@ -1,27 +1,24 @@
-/*
-NAME
-	memset - fill memory with a constant byte
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/23 18:28:24 by ndizullh          #+#    #+#             */
+/*   Updated: 2024/11/23 18:29:52 by ndizullh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-SYNOPSIS
-	#include <string.h>
+#include "libft.h"
 
-	void *memset(void *s, int c, size_t n);
-
-DESCRIPTION
-	The memset() function fills the first n bytes of the memory area pointed to by s with the constant byte c.
-
-RETURN VALUE
-	The memset() function returns a pointer to the memory area s.
-*/
-#include <stddef.h>
-
-void* ft_memset(void* s, int c, size_t n)
+void*	ft_memset(void* s, int c, size_t n)
 {
-    unsigned char* ptr = s;
+	unsigned char	*ptr = s;
 
-    while (n--)
-    {
-	 *ptr++ = (unsigned char)c;
-    }
-    return s;
+	while (n--)
+	{
+		*ptr++ = (unsigned char)c;
+	}
+	return (s);
 }
