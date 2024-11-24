@@ -6,12 +6,14 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:14:29 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/23 18:25:44 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/11/25 05:11:05 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int countlen (int n)
 {
@@ -28,70 +30,68 @@ int countlen (int n)
 	}
 	while(n != 0)
 	{
-		n = n / 10;
 		count++;
+		n /= 10;
 	}
 	return (count);
 }
 
 char *ft_itoa(int n)
 {
-	int		i;
-	int		isnegative;
+	int		len;
+	long	num;
 	char	*str;
 
-	i = 0;
-	isnegative = 0;
-
-	if (n < 0)
-	{
-		isnegative = 1;
-		n = -n;
-	}
-	if (n == 0)
-	{
-		str = malloc(countlen);
+	num = n;
+	len = countlen(n);
+	str = malloc((len + 1) * sizeof(char));
 		if (!str)
 			return NULL;
-		str[i++] = '0';
-		str[i] = '\0';
-		return;
-	}
-
-	while (n != '0')
+	str[len--] = '\0';
+	if (num == 0)
 	{
-		str[i++] = (n % 10) + '0';
-		n = n / 10;
+		str[0] = '0';
+		return (str);
 	}
-
-	if (isnegative)
+	if (num < 0)
 	{
-
+		str[0] = '-';
+		num = -num;
 	}
-
+	while (num > 0)
+	{
+		str[len--] = (num % 10) + '0';
+		num /= 10;
+	}
 	return (str);
-
-	str = count - 1;
-
-	while(str--)
-		*str = n / 10;
-	*str = n % 10;
-	if (n < 0)
-	{
-		*str = '-';
-	}
-
 }
 
-
-
-
-int main(void)
-{
-	int nb = 123;
-
-	printf("%d\n", countlen(nb));
-	return 0;
+/*
+void test_ft_itoa(int n, const char *expected) {
+    char *result = ft_itoa(n);
+	size_t len = strlen(result);
+    if (result == NULL) {
+        printf("Test failed for input %d: Returned NULL\n", n);
+    } else if (strncmp(result, expected, len) == 0) {
+        printf("Test passed for input %d: Result = %s\n", n, result);
+    } else {
+        printf("Test failed for input %d: Expected = %s, Got = %s\n", n, expected, result);
+    }
+    free(result); // Free the allocated memory to avoid memory leaks
 }
+
+int main() {
+    test_ft_itoa(0, "0");             // Zero
+    test_ft_itoa(123, "123");         // Positive number
+    test_ft_itoa(-123, "-123");       // Negative number
+    test_ft_itoa(INT_MAX, "2147483647"); // Maximum integer
+    test_ft_itoa(INT_MIN, "-2147483648"); // Minimum integer
+    test_ft_itoa(1, "1");             // Single digit positive
+    test_ft_itoa(-1, "-1");           // Single digit negative
+    test_ft_itoa(100000, "100000");   // Larger positive number
+    test_ft_itoa(-100000, "-100000"); // Larger negative number
+    return 0;
+}
+*/
 
 

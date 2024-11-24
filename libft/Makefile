@@ -1,15 +1,25 @@
-NAME = libft.a
+SRCS			=	*.c
 
-all: ft_*.o
-	cc -c -Wall -Werror -Wextra ft_*.c
+OBJS			= $(SRCS:.c=.o)
 
-archive: ft_*.o
-	ar -rcs $(NAME) ft_*.o
+CC				= gcc
+RM				= rm -f
+CFLAGS			= -Wall -Wextra -Werror
 
-clean: ft_*.o
-	rm ft_*.o
+NAME			= libft.a
 
-fclean: clean
-	rm -f $(NAME)
+all:			$(NAME)
 
-re: fclean all
+$(NAME):		$(OBJS)
+				ar rcs $(NAME) $(OBJS)
+
+clean:
+				$(RM) $(OBJS)
+
+fclean:			clean
+				$(RM) $(NAME)
+
+re:				fclean $(NAME)
+					rm *o
+
+.PHONY:			all clean fclean re
