@@ -6,7 +6,7 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:39:30 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/25 17:36:54 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:10:10 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strdup(const char *s)
 
 	len_s = ft_strlen(s) + 1;
 	s2 = (char *)malloc(len_s);
-	if (&malloc != NULL)
+	if (s2 != NULL)
 		ft_memcpy(s2, s, len_s);
 	else
 		return (NULL);

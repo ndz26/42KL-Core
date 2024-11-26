@@ -6,21 +6,17 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:36:03 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/23 18:36:13 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/11/26 13:30:55 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_tolower(int c)
+int	ft_tolower(int c)
 {
-	if(c >= 65 && c <= 90)
-	{
+	if (c >= 65 && c <= 90)
 		c = c + 32;
-	}
 	else
-	{
 		c = c;
-	}
-	return c;
+	return (c);
 }

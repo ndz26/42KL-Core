@@ -6,7 +6,7 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 15:10:27 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/25 20:48:00 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/11/26 17:28:38 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	littlelen = ft_strlen(little);
 	if (*little == '\0')
 		return ((char *) big);
-	while (i + littlelen < len)
+	if (len == 0)
+		return (NULL);
+	i = 0;
+	while (i + littlelen <= len && big[i] != '\0')
 	{
-		if ((big[i] == little[0]) &&
-		(strncmp(big + i, little, littlelen) == 0))
+		if ((big[i] == little[0]) && (ft_strncmp(big + i, little, littlelen) == 0))
 		return ((char*)(big + i));
 		i++;
 	}

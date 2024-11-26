@@ -6,7 +6,7 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 10:37:46 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/18 10:48:50 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:58:22 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int	ft_atoi(const char *nptr)
 	{
 		nptr++;
 	}
-	while (*nptr == '+' || *nptr == '-')
+	if (*nptr == '+' || *nptr == '-')
 	{
 		if (*nptr == '-')
 		{
-			sign *= -1;
+			sign = -1;
 		}
 		nptr++;
 	}

@@ -6,21 +6,17 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:21:44 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/23 18:22:28 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:26:45 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int toupper(int c)
+int	ft_toupper(int c)
 {
-	if(c >= 97 && c <= 122)
-	{
+	if (c >= 97 && c <= 122)
 		c = c - 32;
-	}
 	else
-	{
 		c = c;
-	}
-	return c;
+	return (c);
 }

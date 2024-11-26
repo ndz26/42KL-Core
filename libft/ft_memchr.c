@@ -6,7 +6,7 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:08:30 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/25 16:51:19 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:05:57 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	const unsigned char	*p;
-	int					i;
+	size_t					i;
 
 	p = s;
 	i = 0;

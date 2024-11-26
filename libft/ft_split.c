@@ -6,77 +6,60 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 20:41:34 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/23 18:30:22 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:35:37 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_delimiter(char c, char d)
+static int	counttoken(char const *s, char c)
 {
-	return (c == d);
-}
-
-static char	*cp_substr(const char *start, const char *end)
-{
-	char	*substr;
-
-	substr = (char *)malloc(end - start + 1);
-	if (!substr)
-		return (NULL);
-	strncpy(substr, start, end - start);
-	substr[end - start] = '\0';
-	return (substr);
-}
-
-static int	count_substr(const char *str, char d)
-{
+	int	i;
 	int	count;
+	int	passdel;
 
+	i = 0;
 	count = 0;
-	while (*str)
+	passdel = 1;
+	while (s[i] != '\0')
 	{
-		while (*str && is_delimiter(*str, d))
-			str++;
-		if (*str)
-			count++;
-		while (*str && !is_delimiter(*str, d))
-			str++;
+		if (s[i] == c && !passdel)
+			passdel = 1;
+		else if (s[i] != c && passdel)
+		{
+			++count;
+			passdel = 0;
+		}
+		++i;
 	}
 	return (count);
 }
 
-static void	free_result(char **result, int i)
-{
-	while (i-- > 0)
-		free(result[i]);
-	free(result);
-}
-
 char	**ft_split(char const *s, char c)
 {
-	char		**result;
-	const char	*start;
 	int			i;
+	int			j;
+	int			token;
+	char		**tmp;
 
-	result = (char **)malloc(sizeof(char *) * (count_substr(s, c) + 1));
-	if (!s || !(result))
+	if (!s)
 		return (NULL);
 	i = 0;
-	while (*s)
+	token = counttoken(s, c);
+	tmp = malloc(sizeof(char *) * (token + 1));
+	if (!tmp)
+		return (NULL);
+	token = 0;
+	while (s[i] && token < counttoken(s, c))
 	{
-		if (!is_delimiter(*s, c))
-		{
-			start = s;
-			while (*s && !is_delimiter(*s, c))
-				s++;
-			result[i++] = cp_substr(start, s);
-			if (!(result[i++]))
-				return (free_result(result, i - 1), NULL);
-		}
-		else
-			s++;
+		j = 0;
+		while (s[i] == c)
+			i++;
+		while (s[i + j] != c && s[i + j] != '\0')
+			j++;
+		tmp[token++] = ft_substr(s + i, 0, j);
+		i += j;
 	}
-	result[i] = NULL;
-	return (result);
+	tmp[token] = 0;
+	return (tmp);
 }

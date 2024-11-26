@@ -6,17 +6,16 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:25:03 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/23 18:25:10 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:30:03 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int digit)
+int	ft_isdigit(int c)
 {
-	while (digit >= 0 && digit <= 9)
-	{
+	if (c >= '0' && c <= '9')
 		return (1);
-	}
-	return (0);
+	else
+		return (0);
 }

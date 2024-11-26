@@ -6,20 +6,16 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:24:54 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/23 18:24:59 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:25:02 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isacii(int c)
+int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
-	{
 		return (1);
-	}
 	else
-	{
 		return (0);
-	}
 }
