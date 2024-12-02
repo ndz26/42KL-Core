@@ -6,7 +6,7 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:25:03 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/26 15:30:03 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:04:49 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,3 +19,11 @@ int	ft_isdigit(int c)
 	else
 		return (0);
 }
+/*#include <stdio.h>
+
+int	main(void)
+{
+	char num = '4';
+	printf("%d", ft_isdigit(num));
+	return (0);
+}*/
