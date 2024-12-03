@@ -6,7 +6,7 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:12:42 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/26 13:55:24 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:35:03 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,41 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
+	size_t	dst_len;
+	size_t	src_len;
 	size_t	i;
-	size_t	j;
 
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(dst);
+	if (dstsize <= dst_len)
+		return (dstsize + src_len);
 	i = 0;
-	j = 0;
-	while (dst[i] != '\0' && i < dstsize)
-		i++;
-	if (i == dstsize)
-		return (i + ft_strlen(src));
-	while (src[j] != '\0' && i + j + 1 < dstsize)
+	while (src[i] && (dst_len + i + 1) < dstsize)
 	{
-		dst[i + j] = src[j];
-		j++;
+		dst[dst_len + i] = src[i];
+		i++;
 	}
-	dst[i + j] = '\0';
-	return (i + ft_strlen(src));
+	dst[dst_len + i] = '\0';
+	return (dst_len + src_len);
 }
+/*
+#include <stdio.h>
+int main(void)
+{
+	char dest[20] = "Hello ";
+	char src[] = "World!";
+	size_t size = 20;
+
+	printf("Before\n");
+	printf("dest\t\t: %s\n", dest);
+	printf("src\t\t: %s\n", src);
+	printf("dest len\t: %zu\n", ft_strlen(dest));
+	printf("src len\t\t: %zu\n", ft_strlen(src));
+	size_t result = ft_strlcat(dest, src, size);
+
+	printf("\nAfter\n");
+	printf("dest\t\t: %s\n", dest);
+	printf("dest len\t: %zu\n", result);
+
+	return (0);
+}*/
