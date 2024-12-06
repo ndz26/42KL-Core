@@ -6,7 +6,7 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 10:37:46 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/12/01 21:55:11 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:19:50 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	ft_atoi(const char *nstr)
 	}
 	return (sign * result);
 }
-/*#include <stdio.h>
+/*
+#include <stdio.h>
 #include <limits.h>
 
 void test_atoi(const char *input) {
@@ -50,38 +51,31 @@ void test_atoi(const char *input) {
 
 int main(void) {
 	// Original tests
-	printf("=== Basic Tests ===\n");
 	test_atoi("");
 	test_atoi("hello");
-	test_atoi("123");
-	test_atoi("abc123");
 	test_atoi("123abc12");
 	test_atoi("0123");
 	test_atoi("-9999");
 
 	// Whitespace tests
-	printf("=== Whitespace Tests ===\n");
 	test_atoi("   123");
 	test_atoi("\t456");
 	test_atoi("\n789");
 	test_atoi("   -123   ");
 
 	// Sign tests
-	printf("=== Sign Tests ===\n");
 	test_atoi("+123");
 	test_atoi("++123");
 	test_atoi("--123");
 	test_atoi("-+123");
 
 	// Edge cases
-	printf("=== Edge Cases ===\n");
 	test_atoi("2147483647");
 	test_atoi("-2147483648");
 	test_atoi("2147483648");
 	test_atoi("-2147483649");
 
 	// Invalid input
-	printf("=== Invalid Input Tests ===\n");
 	test_atoi("123.456");
 	test_atoi("12,345");
 	test_atoi("0x123");

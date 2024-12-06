@@ -6,7 +6,7 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 09:12:42 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/12/03 12:35:03 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/12/06 17:17:03 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 
 	dst_len = ft_strlen(dst);
-	src_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
 	if (dstsize <= dst_len)
 		return (dstsize + src_len);
 	i = 0;

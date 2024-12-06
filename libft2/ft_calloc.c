@@ -6,7 +6,7 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:25:16 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/12/01 14:48:25 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:34:37 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,27 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ft_bzero (array, nmemb * size);
 	return (array);
 }
+/*
+#include <stdio.h>
+
+int main(void)
+{
+	int *arr;
+	size_t n = 5; //SIZE_MAX
+
+	arr = (int *)ft_calloc(n, sizeof(int));
+		if (arr == NULL)
+	{
+	   printf("Memory allocation failed\n");
+	   return (1);
+	}
+	size_t i = 0;
+	while (i < n)
+	{
+		printf("%d ", arr[i]);
+		i++;
+	}
+	printf("\n");
+	free(arr);
+	return (0);
+}*/

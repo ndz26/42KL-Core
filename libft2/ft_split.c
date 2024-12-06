@@ -6,11 +6,12 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 20:41:34 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/12/02 12:42:13 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:39:54 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 /*static int	count_words(char const *s, char delim)
 {
@@ -63,7 +64,6 @@ char	**ft_split(char const *s, char delim)
 	result[word_count] = 0;
 	return (result);
 }*/
-
 static int	count_words(char const *str, char delim)
 {
 	int	count;
@@ -87,7 +87,7 @@ char	**ft_split(char const *str, char delim)
 	int		word_len;
 	char	**result;
 
-	result = malloc((count_words(str, delim) + 1) * sizeof(char));
+	result = malloc((count_words(str, delim) + 1) * sizeof(char *));
 	if (!str || !result)
 		return (NULL);
 	i = 0;
@@ -108,4 +108,26 @@ char	**ft_split(char const *str, char delim)
 	}
 	result[i] = 0;
 	return (result);
+}
+
+int main (void)
+{
+	char *str1 = "Heisenberg Jessie Saul Goodman";
+	char c = ' ';
+	char ** result;
+	char **tmp
+	int i;
+
+	printf("Original string: %s\n", str1);
+	result = ft_split(str1, c);
+
+	i = 0;
+	while (result[i])
+	{
+		printf("After ft_split\t: %ld\n", result[i]);
+		free(result[i]);
+		i++;
+	}
+	free (result);
+	return (0);
 }
