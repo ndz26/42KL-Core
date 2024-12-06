@@ -6,32 +6,25 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 20:41:34 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/12/06 18:39:54 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/12/06 22:43:50 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-/*static int	count_words(char const *s, char delim)
+static int	count_words(char const *str, char delim)
 {
-	int	i;
 	int	count;
-	int	pass_del;
 
-	i = 0;
 	count = 0;
-	pass_del = 1;
-	while (s[i] != '\0')
+	while (*str)
 	{
-		if (s[i] == delim && !pass_del)
-			pass_del = 1;
-		else if (s[i] != delim && pass_del)
-		{
-			++count;
-			pass_del = 0;
-		}
-		++i;
+		while (*str == delim)
+			str++;
+		if (*str)
+			count++;
+		while (*str && *str != delim)
+			str++;
 	}
 	return (count);
 }
@@ -63,7 +56,8 @@ char	**ft_split(char const *s, char delim)
 	}
 	result[word_count] = 0;
 	return (result);
-}*/
+}
+/*
 static int	count_words(char const *str, char delim)
 {
 	int	count;
@@ -108,7 +102,8 @@ char	**ft_split(char const *str, char delim)
 	}
 	result[i] = 0;
 	return (result);
-}
+}*/
+/*#include <stdio.h>
 
 int main (void)
 {
@@ -130,4 +125,4 @@ int main (void)
 	}
 	free (result);
 	return (0);
-}
+}*/

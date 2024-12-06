@@ -6,60 +6,128 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 20:41:34 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/26 18:35:37 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/12/06 22:31:04 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	counttoken(char const *s, char c)
+/*static int	count_words(char const *s, char delim)
 {
 	int	i;
 	int	count;
-	int	passdel;
+	int	pass_del;
 
 	i = 0;
 	count = 0;
-	passdel = 1;
+	pass_del = 1;
 	while (s[i] != '\0')
 	{
-		if (s[i] == c && !passdel)
-			passdel = 1;
-		else if (s[i] != c && passdel)
+		if (s[i] == delim && !pass_del)
+			pass_del = 1;
+		else if (s[i] != delim && pass_del)
 		{
 			++count;
-			passdel = 0;
+			pass_del = 0;
 		}
 		++i;
 	}
 	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char delim)
 {
 	int			i;
 	int			j;
-	int			token;
-	char		**tmp;
+	int			word_count;
+	char		**result;
 
 	if (!s)
 		return (NULL);
 	i = 0;
-	token = counttoken(s, c);
-	tmp = malloc(sizeof(char *) * (token + 1));
-	if (!tmp)
+	word_count = count_words(s, delim);
+	result = malloc(sizeof(char *) * (word_count + 1));
+	if (!result)
 		return (NULL);
-	token = 0;
-	while (s[i] && token < counttoken(s, c))
+	word_count = 0;
+	while (s[i] && word_count < count_words(s, delim))
 	{
 		j = 0;
-		while (s[i] == c)
+		while (s[i] == delim) //hello
 			i++;
-		while (s[i + j] != c && s[i + j] != '\0')
+		while (s[i + j] != delim && s[i + j] != '\0')
 			j++;
-		tmp[token++] = ft_substr(s + i, 0, j);
+		result[word_count++] = ft_substr(s + i, 0, j);
 		i += j;
 	}
-	tmp[token] = 0;
-	return (tmp);
+	result[word_count] = 0;
+	return (result);
+}*/
+static int	count_words(char const *str, char delim)
+{
+	int	count;
+
+	count = 0;
+	while (*str)
+	{
+		while (*str == delim)
+			str++;
+		if (*str)
+			count++;
+		while (*str && *str != delim)
+			str++;
+	}
+	return (count);
 }
+
+char	**ft_split(char const *str, char delim)
+{
+	int		i;
+	int		word_len;
+	char	**result;
+
+	result = malloc((count_words(str, delim) + 1) * sizeof(char *));
+	if (!str || !result)
+		return (NULL);
+	i = 0;
+	while (*str)
+	{
+		while (*str == delim)
+			str++;
+		if (str)
+		{
+			word_len = 0;
+			while (str[word_len] && str[word_len] != delim)
+				word_len++;
+			result[i++] = ft_substr(str, 0, word_len);
+			if (!result)
+				return (NULL);
+			str += word_len;
+		}
+	}
+	result[i] = 0;
+	return (result);
+}
+/*#include <stdio.h>
+
+int main (void)
+{
+	char *str1 = "Heisenberg Jessie Saul Goodman";
+	char c = ' ';
+	char ** result;
+	char **tmp
+	int i;
+
+	printf("Original string: %s\n", str1);
+	result = ft_split(str1, c);
+
+	i = 0;
+	while (result[i])
+	{
+		printf("After ft_split\t: %ld\n", result[i]);
+		free(result[i]);
+		i++;
+	}
+	free (result);
+	return (0);
+}*/

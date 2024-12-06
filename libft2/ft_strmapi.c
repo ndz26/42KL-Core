@@ -6,7 +6,7 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 14:56:01 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/25 20:34:04 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/12/06 21:35:54 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,21 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	str[i] = '\0';
 	return (str);
 }
+/*#include <stdio.h>
+
+char function(unsigned int i, char c)
+{
+	(void)i;
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
+}
+int main(void)
+{
+	char *str1 = "welcome to 42kl";
+	char *result = ft_strmapi(str1, function);
+	printf("Original string\t\t: %s\n", str1);
+	printf("Convert to uppercase\t: %s\n", result);
+	free(result);
+	return (0);
+}*/

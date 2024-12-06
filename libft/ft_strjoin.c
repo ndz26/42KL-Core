@@ -6,7 +6,7 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:08:46 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/26 18:07:10 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/12/06 16:51:04 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,17 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcat(newstr, s2, sumlen);
 	return (newstr);
 }
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	char const *str1 = "Happy ";
+	char const *str2 = "Birthday";
+
+	printf("Original string\t: %s\n", str1);
+	char *result = ft_strjoin(str1, str2);
+	printf("After ft_strjoin: %s\n", result);
+
+	return (0);
+}*/

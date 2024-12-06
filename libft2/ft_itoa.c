@@ -6,29 +6,30 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:14:29 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/25 16:49:36 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/12/06 21:15:47 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	countlen(int n)
+static int	countlen(int n)
 {
-	int	count;
+	int		count;
+	long	num;
 
 	count = 0;
+	num = n;
 	if (n == 0)
-	{
 		return (1);
-	}
 	if (n < 0)
 	{
 		count++;
+		num = -n;
 	}
-	while (n != 0)
+	while (num != 0)
 	{
 		count++;
-		n /= 10;
+		num /= 10;
 	}
 	return (count);
 }
@@ -59,3 +60,19 @@ char	*ft_itoa(int n)
 	}
 	return (str);
 }
+/*#include <stdio.h>
+
+int	main(void)
+{
+	int numbers[] = {0, -0, 66, -66, 1, -1, 2147483647, -2147483648};
+	int i = 0;
+
+	while(i < 8)
+	{
+		char *result = ft_itoa(numbers[i]);
+		printf("Number\t: %d\nString\t: %s\n\n", numbers[i], result);
+		i++;
+		free(result);
+	}
+	return (0);
+}*/

@@ -6,7 +6,7 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 05:39:24 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/11/26 15:14:05 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/12/06 22:28:51 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,14 @@ void	ft_putnbr_fd(int n, int fd)
 	n = n % 10 + '0';
 	write(fd, &n, 1);
 }
+/*
+#include <fcntl.h>
+
+int	main(void)
+{
+	int num = 123;
+	int fd = open("hello", O_WRONLY | O_CREAT, 0644);
+	ft_putnbr_fd(num, fd);
+	close(fd);
+	return (0);
+}*/
