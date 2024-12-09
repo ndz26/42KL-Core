@@ -5,108 +5,77 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 20:41:34 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/12/06 22:31:04 by ndizullh         ###   ########.fr       */
+/*   Created: 2024/12/07 10:01:00 by ndizullh          #+#    #+#             */
+/*   Updated: 2024/12/07 10:56:20 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*static int	count_words(char const *s, char delim)
+static void	ft_free_split(char **tab, int count)
 {
-	int	i;
-	int	count;
-	int	pass_del;
+	while (count--)
+		free(tab[count]);
+	free(tab);
+}
 
-	i = 0;
+static int	ft_count_words(char const *s, char sep)
+{
+	int	count;
+
 	count = 0;
-	pass_del = 1;
-	while (s[i] != '\0')
+	while (*s)
 	{
-		if (s[i] == delim && !pass_del)
-			pass_del = 1;
-		else if (s[i] != delim && pass_del)
-		{
+		while (*s == sep)
+			++s;
+		if (*s)
 			++count;
-			pass_del = 0;
-		}
-		++i;
+		while (*s && *s != sep)
+			++s;
 	}
 	return (count);
 }
 
-char	**ft_split(char const *s, char delim)
+static int	ft_fill_words(char **tab, char const *s, char sep, int size)
 {
+	const char	*word_start;
 	int			i;
-	int			j;
-	int			word_count;
-	char		**result;
+
+	i = 0;
+	while (*s && i < size)
+	{
+		while (*s == sep)
+			s++;
+		word_start = s;
+		while (*s && *s != sep)
+			s++;
+		tab[i] = ft_substr(word_start, 0, s - word_start);
+		if (s > word_start && !(tab[i]))
+			return (0);
+		if (s > word_start)
+			i++;
+	}
+	tab[i] = NULL;
+	return (1);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**tab;
+	int		size;
 
 	if (!s)
 		return (NULL);
-	i = 0;
-	word_count = count_words(s, delim);
-	result = malloc(sizeof(char *) * (word_count + 1));
-	if (!result)
+	size = ft_count_words(s, c);
+	tab = malloc(sizeof(char *) * (size + 1));
+	if (!tab)
 		return (NULL);
-	word_count = 0;
-	while (s[i] && word_count < count_words(s, delim))
+	if (!ft_fill_words(tab, s, c, size))
 	{
-		j = 0;
-		while (s[i] == delim) //hello
-			i++;
-		while (s[i + j] != delim && s[i + j] != '\0')
-			j++;
-		result[word_count++] = ft_substr(s + i, 0, j);
-		i += j;
-	}
-	result[word_count] = 0;
-	return (result);
-}*/
-static int	count_words(char const *str, char delim)
-{
-	int	count;
-
-	count = 0;
-	while (*str)
-	{
-		while (*str == delim)
-			str++;
-		if (*str)
-			count++;
-		while (*str && *str != delim)
-			str++;
-	}
-	return (count);
-}
-
-char	**ft_split(char const *str, char delim)
-{
-	int		i;
-	int		word_len;
-	char	**result;
-
-	result = malloc((count_words(str, delim) + 1) * sizeof(char *));
-	if (!str || !result)
+		ft_free_split(tab, size);
 		return (NULL);
-	i = 0;
-	while (*str)
-	{
-		while (*str == delim)
-			str++;
-		if (str)
-		{
-			word_len = 0;
-			while (str[word_len] && str[word_len] != delim)
-				word_len++;
-			result[i++] = ft_substr(str, 0, word_len);
-			if (!result)
-				return (NULL);
-			str += word_len;
-		}
 	}
-	result[i] = 0;
-	return (result);
+	return (tab);
 }
 /*#include <stdio.h>
 
@@ -115,16 +84,16 @@ int main (void)
 	char *str1 = "Heisenberg Jessie Saul Goodman";
 	char c = ' ';
 	char ** result;
-	char **tmp
+	char **tmp;
 	int i;
 
-	printf("Original string: %s\n", str1);
+	printf("Original string\t: %s\n", str1);
 	result = ft_split(str1, c);
 
 	i = 0;
 	while (result[i])
 	{
-		printf("After ft_split\t: %ld\n", result[i]);
+		printf("After ft_split\t: %s\n", result[i]);
 		free(result[i]);
 		i++;
 	}

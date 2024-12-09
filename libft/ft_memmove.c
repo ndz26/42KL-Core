@@ -6,7 +6,7 @@
 /*   By: ndizullh <ndizullh@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 12:42:18 by ndizullh          #+#    #+#             */
-/*   Updated: 2024/12/03 11:12:15 by ndizullh         ###   ########.fr       */
+/*   Updated: 2024/12/07 10:49:02 by ndizullh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	d = dest;
 	s = src;
+	if (n == 0 || dest == src)
+		return (dest);
 	if (d < s || d >= s + n)
 		ft_memcpy(d, s, n);
 	else
